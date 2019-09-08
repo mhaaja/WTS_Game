@@ -101,6 +101,16 @@ namespace WTS_Game.Core.Models
             return ProcessMovement(gameMovement);
         }
 
+        public bool UndoMovement()
+        {
+            if(m_gameMovements.Count > 0)
+            {
+                m_gameMovements.RemoveAt(m_gameMovements.Count - 1);
+                return true;
+            }
+            return false;
+        }
+
         private GameMovement ProcessMovement(GameMovement gameMovement)
         {
             if (gameMovement.PositionX >= 0 && gameMovement.PositionX < m_map.Width && gameMovement.PositionY >= 0 && gameMovement.PositionY < m_map.Height)
@@ -166,7 +176,7 @@ namespace WTS_Game.Core.Models
                 m_mapMovements++;
                 if(m_map.IsWinning)
                 {
-                    GameMessage = "You win!";
+                    GameMessage = "You won!";
                     Points += Math.Max(1, m_map.MapPoints - m_mapMovements);
                     IsSimulationOn = false;
                 }
