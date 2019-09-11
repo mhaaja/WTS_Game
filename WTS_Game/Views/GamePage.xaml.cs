@@ -211,10 +211,7 @@ namespace WTS_Game.Views
 
         private void UpButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            DateTime start = DateTime.Now;
             AddMovement(ViewModel.MoveUp());
-            DateTime end = DateTime.Now;
-            ViewModel.Message = (end - start).ToString();
         }
 
         private void AddMovement(GameMovement gameMovement)
@@ -231,26 +228,25 @@ namespace WTS_Game.Views
 
         private void DownButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            DateTime start = DateTime.Now;
             AddMovement(ViewModel.MoveDown());
-            DateTime end = DateTime.Now;
-            ViewModel.Message = (end - start).ToString();
         }
 
         private void LeftButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            DateTime start = DateTime.Now;
             AddMovement(ViewModel.MoveLeft());
-            DateTime end = DateTime.Now;
-            ViewModel.Message = (end - start).ToString();
         }
 
         private void RightButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            DateTime start = DateTime.Now;
             AddMovement(ViewModel.MoveRight());
-            DateTime end = DateTime.Now;
-            ViewModel.Message = (end - start).ToString();
+        }
+
+        private void UndoButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if(ViewModel.UndoMovement())
+            {
+                m_gameCanvas.Children.RemoveAt(m_gameCanvas.Children.Count - 1);
+            }
         }
 
         private DispatcherTimer m_dispatcherTimer;

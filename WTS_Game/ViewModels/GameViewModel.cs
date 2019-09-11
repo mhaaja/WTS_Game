@@ -53,9 +53,15 @@ namespace WTS_Game.ViewModels
                 {
                     OnPropertyChanged(nameof(BeforeSimulationVisiblity));
                     OnPropertyChanged(nameof(AfterSimulationVisiblity));
+                    OnPropertyChanged(nameof(IsUndoPossible));
+                    OnPropertyChanged(nameof(IsRunPossible));
                 }
             }
         }
+
+        public bool IsUndoPossible => m_isGameOn & m_game.GameMovements.Count() > 0;
+
+        public bool IsRunPossible => m_isGameOn & m_game.GameMovements.Count() > 0;
 
         public Visibility BeforeSimulationVisiblity => m_isGameOn ? Visibility.Visible : Visibility.Collapsed;
 
@@ -104,7 +110,9 @@ namespace WTS_Game.ViewModels
         {
             if(m_game.IsGameOn && !m_game.IsSimulationOn)
             {
-                return m_game.MoveUp();
+                GameMovement result = m_game.MoveUp();
+                OnPropertyChanged(nameof(IsUndoPossible));
+                return result;
             }
             return null;
         }
@@ -113,7 +121,10 @@ namespace WTS_Game.ViewModels
         {
             if (m_game.IsGameOn && !m_game.IsSimulationOn)
             {
-                return m_game.MoveDown();
+                GameMovement result = m_game.MoveDown();
+                OnPropertyChanged(nameof(IsUndoPossible));
+                OnPropertyChanged(nameof(IsRunPossible));
+                return result;
             }
             return null;
         }
@@ -122,7 +133,10 @@ namespace WTS_Game.ViewModels
         {
             if (m_game.IsGameOn && !m_game.IsSimulationOn)
             {
-                return m_game.MoveLeft();
+                GameMovement result = m_game.MoveLeft();
+                OnPropertyChanged(nameof(IsUndoPossible));
+                OnPropertyChanged(nameof(IsRunPossible));
+                return result;
             }
             return null;
         }
@@ -131,9 +145,24 @@ namespace WTS_Game.ViewModels
         {
             if (m_game.IsGameOn && !m_game.IsSimulationOn)
             {
-                return m_game.MoveRight();
+                GameMovement result = m_game.MoveRight();
+                OnPropertyChanged(nameof(IsUndoPossible));
+                OnPropertyChanged(nameof(IsRunPossible));
+                return result;
             }
             return null;
+        }
+
+        public bool UndoMovement()
+        {
+            if (m_game.IsGameOn && !m_game.IsSimulationOn)
+            {
+                bool result = m_game.UndoMovement();
+                OnPropertyChanged(nameof(IsUndoPossible));
+                OnPropertyChanged(nameof(IsRunPossible));
+                return result;
+            }
+            return false;
         }
 
         public bool StartSimulation()
