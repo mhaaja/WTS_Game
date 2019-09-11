@@ -9,14 +9,32 @@
     Style="{StaticResource PageStyle}">
     <Page.Resources>
         <ControlTemplate x:Key="player" TargetType="ContentControl">
-            <Grid>
-                <Ellipse Margin="2" Width="36" Height="36" Fill="Aqua"/>
-            </Grid>
+            <Canvas Grid.Column="0" Width="40" Height="40">
+                <Ellipse Width="8" Height="11" StrokeThickness="1" Stroke="Black" Canvas.Left="16" Canvas.Top="1"/>
+                <Path Stroke="Black" StrokeThickness="1" Data="M18,6 L19,6 M21,6 L22,6 M20,7 L19,9 21,9"/>
+                <Line Stroke="Black" StrokeThickness="4" X1="20" X2="20" Y1="12" Y2="26"/>
+                <Path Stroke="Black" StrokeThickness="2" Data="M15,39 L16,34 19,26 21,26 24,34 25,39"/>
+                <Path Stroke="Black" StrokeThickness="1" Data="M12,20 L19,15 21,15 28,20"/>
+            </Canvas>
         </ControlTemplate>
         <ControlTemplate x:Key="home" TargetType="ContentControl">
-            <Grid>
-                <Rectangle Margin="2" Width="36" Height="36" Fill="Green"/>
-            </Grid>
+            <Canvas Grid.Column="2" Width="40" Height="40">
+                <Rectangle Stroke="Black" StrokeThickness="1" Canvas.Left="12" Canvas.Top="4" Width="22" Height="16"/>
+                <Rectangle Fill="Black" Canvas.Left="13" Canvas.Top="5" Width="4" Height="3"/>
+                <Rectangle Fill="Black" Canvas.Left="21" Canvas.Top="5" Width="4" Height="3"/>
+                <Rectangle Fill="Black" Canvas.Left="29" Canvas.Top="5" Width="4" Height="3"/>
+                <Rectangle Fill="Black" Canvas.Left="17" Canvas.Top="8" Width="4" Height="3"/>
+                <Rectangle Fill="Black" Canvas.Left="25" Canvas.Top="8" Width="4" Height="3"/>
+                <Rectangle Fill="Black" Canvas.Left="13" Canvas.Top="11" Width="4" Height="3"/>
+                <Rectangle Fill="Black" Canvas.Left="21" Canvas.Top="11" Width="4" Height="3"/>
+                <Rectangle Fill="Black" Canvas.Left="29" Canvas.Top="11" Width="4" Height="3"/>
+                <Rectangle Fill="Black" Canvas.Left="17" Canvas.Top="14" Width="4" Height="3"/>
+                <Rectangle Fill="Black" Canvas.Left="25" Canvas.Top="14" Width="4" Height="3"/>
+                <Rectangle Fill="Black" Canvas.Left="13" Canvas.Top="17" Width="4" Height="3"/>
+                <Rectangle Fill="Black" Canvas.Left="21" Canvas.Top="17" Width="4" Height="3"/>
+                <Rectangle Fill="Black" Canvas.Left="29" Canvas.Top="17" Width="4" Height="3"/>
+                <Line Stroke="Black" StrokeThickness="2" X1="11" X2="11" Y1="4" Y2="35"/>
+            </Canvas>
         </ControlTemplate>
         <ControlTemplate x:Key="wall" TargetType="ContentControl">
             <Grid>
@@ -24,9 +42,21 @@
             </Grid>
         </ControlTemplate>
         <ControlTemplate x:Key="trap" TargetType="ContentControl">
-            <Grid>
-                <Ellipse Margin="10" Width="20" Height="20" Fill="Red"/>
-            </Grid>
+            <Canvas Grid.Column="3" Width="40" Height="40">
+                <Ellipse Stroke="Black" StrokeThickness="1" Canvas.Left="10" Canvas.Top="20" Width="20" Height="14"/>
+                <Line Stroke="Black" StrokeThickness="1" X1="11" X2="29" Y1="27" Y2="27"/>
+                <Path Fill="Black" Data="M18,25 L22,25 23,29 17,29z"/>
+                <Path Fill="Black" Data="M20,31 L21,33 19,33z"/>
+                <Path Fill="Black" Data="M17,31 L17,33 15,32z"/>
+                <Path Fill="Black" Data="M14,29 L13,32 11,30z"/>
+                <Path Fill="Black" Data="M23,31 L23,33 25,32z"/>
+                <Path Fill="Black" Data="M26,29 L27,32 29,30z"/>
+                <Path Fill="Black" Data="M20,23 L21,21 19,21z"/>
+                <Path Fill="Black" Data="M17,23 L17,21 15,22z"/>
+                <Path Fill="Black" Data="M14,25 L13,22 11,24z"/>
+                <Path Fill="Black" Data="M23,23 L23,21 25,22z"/>
+                <Path Fill="Black" Data="M26,25 L27,22 29,24z"/>
+            </Canvas>
         </ControlTemplate>
         <ControlTemplate x:Key="moveUp" TargetType="ContentControl">
             <Grid>
@@ -53,10 +83,12 @@
             </Grid>
         </ControlTemplate>
         <ControlTemplate x:Key="monster" TargetType="ContentControl">
-            <Grid>
-                <Line X1="2" Y1="2" X2="36" Y2="36" Stroke="Black" StrokeThickness="1"/>
-                <Line X1="36" Y1="2" X2="2" Y2="36" Stroke="Black" StrokeThickness="1"/>
-            </Grid>
+            <Canvas Grid.Column="1" Width="40" Height="40">
+                <Path Stroke="Black" StrokeThickness="1" Data="M10,35 L10,12 12,8 14,6 16,5 20,4 24,5 26,6 28,8 30,12 30,35 26,32 23,35 20,32 17,35 14,32z"/>
+                <Ellipse Stroke="Black" StrokeThickness="1" Canvas.Left="14" Canvas.Top="15" Width="4" Height="3"/>
+                <Ellipse Stroke="Black" StrokeThickness="1" Canvas.Left="22" Canvas.Top="15" Width="4" Height="3"/>
+                <Ellipse Stroke="Black" StrokeThickness="1" Canvas.Left="16" Canvas.Top="22" Width="7" Height="3"/>
+            </Canvas>
         </ControlTemplate>
         <ControlTemplate x:Key="patrolArea" TargetType="ContentControl">
             <Grid>
